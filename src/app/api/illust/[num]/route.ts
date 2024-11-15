@@ -16,7 +16,8 @@ export async function GET(
   try {
     const illusts = await db.getIllustsUrl(n)
     return NextResponse.json(illusts)
-  } catch (err) {
+  } catch (error) {
+    console.error(error)
     return NextResponse.json(
       { error: 'Internal Server Error' },
       { status: 500 },

@@ -136,6 +136,8 @@ export class Database {
           'authorId',
           illust.author_details.user_id,
         )
+        const total = await this._client.get('baImg:total')
+        await this._client.set('baImg:total', total ? parseInt(total) + 1 : 1)
       }
       await this.disconnect()
     }

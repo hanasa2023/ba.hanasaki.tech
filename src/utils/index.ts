@@ -1,6 +1,8 @@
+export * from './translate'
+
 export function getRandomSamples<T>(array: T[], num: number): T[] {
   if (num >= array.length) {
-    throw new Error('num must be less than the length of the array')
+    num = array.length
   }
   const result = [...array]
   for (let i = 0; i < num; i++) {

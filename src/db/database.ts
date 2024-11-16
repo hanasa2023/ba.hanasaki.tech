@@ -31,7 +31,7 @@ export class Database {
     }
   }
 
-  async getIllustsUrl(num: number): Promise<IllustDTO[]> {
+  async getIllusts(num: number): Promise<IllustDTO[]> {
     const illusts: IllustDTO[] = []
     await this.connect()
     const tags = await this._client.keys('baTag*')
@@ -41,7 +41,10 @@ export class Database {
     const pids = getRandomSamples(ids, num)
     for (const pid of pids) {
       const illust = await this._client.hGetAll(`baId:${pid}`)
-      const illustInfo = parseRedisHash<IllustDTO>(illust)
+      const illustInfo = {
+        ...parseRedisHash<IllustDTO>(illust),
+        id: parseInt(pid),
+      }
       illusts.push(illustInfo)
     }
     await this.disconnect()
@@ -57,7 +60,10 @@ export class Database {
     const pids = getRandomSamples(ids, num)
     for (const pid of pids) {
       const illust = await this._client.hGetAll(`baId:${pid}`)
-      const illustInfo = parseRedisHash<IllustDTO>(illust)
+      const illustInfo = {
+        ...parseRedisHash<IllustDTO>(illust),
+        id: parseInt(pid),
+      }
       illusts.push(illustInfo)
     }
     await this.disconnect()

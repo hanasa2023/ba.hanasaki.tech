@@ -14,7 +14,7 @@ export async function GET(
   const db = new Database(process.env.REDIS_URL as string)
 
   try {
-    const illusts = await db.getIllustsUrl(n)
+    const illusts = await db.getIllusts(n)
     return NextResponse.json(illusts)
   } catch (error) {
     console.error(error)

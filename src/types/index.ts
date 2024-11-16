@@ -4,7 +4,7 @@ export interface IllustDTO {
   author: string
   authorId: number
   tags: string
-  imageUrl: string
+  imgUrl: string
   aiType: number
   restrict: string
 }

@@ -65,7 +65,7 @@ export class Database {
         author: illustInfo.author,
         title: illustInfo.title,
         tags: illustInfo.tags.split(', '),
-        imageUrl: illustInfo.imageUrl,
+        imageUrl: illustInfo.imgUrl,
         aiType: illustInfo.aiType !== 1,
         restrict: illustInfo.restrict,
       })

@@ -106,7 +106,7 @@ export class Database {
         pid,
       )
       await this._client.sAdd(
-        `baImg:${illust.restrict === '0' ? 'safe' : 'r18'}`,
+        `baImg:${illust.x_restrict === '0' ? 'safe' : 'r18'}`,
         pid,
       )
       const existsId = await this._client.exists(`baId:${pid}`)
@@ -118,7 +118,7 @@ export class Database {
         await this._client.hSet(
           `baId:${pid}`,
           'restrict',
-          illust.restrict === '0' ? 'safe' : 'r18',
+          illust.x_restrict === '0' ? 'safe' : 'r18',
         )
         await this._client.hSet(`baId:${pid}`, 'aiType', illust.ai_type)
         await this._client.hSet(
@@ -140,7 +140,9 @@ export class Database {
         await this._client.set('baImg:total', total ? parseInt(total) + 1 : 1)
       }
       await this.disconnect()
+      return '图片信息已存入数据库'
+    } else {
+      return '获取图片信息失败'
     }
-    return '图片信息已存入数据库'
   }
 }

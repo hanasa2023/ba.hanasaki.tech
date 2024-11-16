@@ -32,6 +32,7 @@ export interface IllustDetails {
   url_big: string
   tags: string[]
   restrict: string
+  x_restrict: string
   ai_type: number
   author_details: AuthorDetailsDTO
   bookmark_user_total: number
